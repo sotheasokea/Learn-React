@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise Lesson 2</title>
+</head>
+<body>
+  <div class = "exercise-2a"></div>
+  <div class = "exercise-2e"></div>
+
+  <script src="https://unpkg.com/supersimpledev@3.2.1/external-library.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+  <script type="text/babel">
+    // 2 a-d
+    function App(){
+      return (
+        <>
+        <p>Hello, welcome to my website.</p>
+        <LoginForm />
+       </>
+      );
+    }
+
+    function LoginForm(){
+      return (
+        <>
+          <div>
+            <input placeholder = "Email" />
+          </div>
+          <div>
+            <input placeholder = "Password"/>
+          </div>
+          <button>Login</button>
+          <button>Sign Up</button>
+        </>
+      );
+    }
+    const container_2a = document.querySelector('.exercise-2a');
+    ReactDOM.createRoot(container_2a).render(<App />);
+
+    // 2 e - h
+    function EcommerceApp(){
+      return (
+        <>
+          <ProductDetails pName = "Cotton socks" price = {10.90} discount = {5.00} imageSrc = "../Exercise/image/cotton-socks.png"/>
+          <ProductDetails pName = "Tennis Balls" price = {6.00} imageSrc = "../Exercise/image/tennis-balls.png"/>
+          <ProductDetails pName = "Plain T-Shirt" price = {7.99} imageSrc = "../Exercise/image/plain-t-shirt.png"/>
+        </>
+      );
+    };
+
+    function ProductDetails({pName, price, discount, imageSrc}){
+      return (
+        <>
+          <img src = {imageSrc} width = "80" style={{display: "block"}}/>
+          <p>{pName}</p>
+          {
+            discount ? 
+            <>
+              <p><del>Price: ${price}</del></p>
+              <p>Discount price: ${discount}</p>
+            </> :
+            <p>Price: ${price}</p>
+          }
+          <button>Add to Cart </button>
+        </>
+      );
+    }
+    const container_2e = document.querySelector('.exercise-2e');
+    ReactDOM.createRoot(container_2e).render(<EcommerceApp />);
+
+
+  </script>
+
+</body>
+</html>

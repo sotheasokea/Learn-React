@@ -35,7 +35,7 @@
           
         }
 
-        function sendMessage(){
+        async function sendMessage(){
           const newChatMessages = [
             ...chatMessages,
             {
@@ -47,7 +47,7 @@
 
           setChatMessages(newChatMessages);
 
-          const respond = Chatbot.getResponse(inputText);
+          const respond = await Chatbot.getResponseAsync(inputText);
 
           setChatMessages([
             ...newChatMessages,

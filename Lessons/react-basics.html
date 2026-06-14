@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <!-- using external Library -->
+    <script src="https://unpkg.com/supersimpledev@3.2.1/external-library.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- Babel libray : use to translate JSX to JS-->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      const button = <button> hello </button>;
+      const paragraph = <p>Paragraph of Text</p>;
+
+      // save multiple element use DIV
+      const div = (
+        <div>
+          <button> hello </button>
+          <p>Paragraph of Text {2 + 7}</p>
+        </div>
+      );
+      
+      const container = document.querySelector('.js-container');
+      // render = display something on the website
+      ReactDOM.createRoot(container).render('Welcome to React Course!');
+      ReactDOM.createRoot(container).render(div);
+    </script>
+  </body>
+</html>

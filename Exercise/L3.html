@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>State and Event Handlers</title>
+</head>
+<body>
+  <div class="exercise-3a"></div>
+  <script src="https://unpkg.com/supersimpledev@3.2.1/external-library.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+  <script type="text/babel">
+
+    function Buttons({count, setCount}){
+      function buttonClicked(){
+        setCount(count+1);
+        // console.log("Clicked");
+      }
+      return (
+        <>
+          {
+            count === 1 ?(
+            <button onClick={buttonClicked}>
+                Clicked {count} time
+            </button>)
+            : (
+            <button onClick={buttonClicked}>
+                Clicked {count} times
+            </button>)
+          }
+        </>
+      );
+    }
+
+    function App(){
+      const [count, setCount] = React.useState(0);
+      function resetCount(){
+        setCount(0);
+      }
+      return (
+        <>
+          <Buttons count={count} setCount={setCount}/>
+          <Buttons count={count} setCount={setCount}/>
+          <button onClick={resetCount}>Reset</button>
+        </>
+      );
+    }
+    
+    const container_3a = document.querySelector('.exercise-3a');
+    ReactDOM.createRoot(container_3a).render(<App />);
+
+  </script>
+
+</body>
+</html>

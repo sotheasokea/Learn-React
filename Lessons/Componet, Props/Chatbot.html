@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <!-- 
+    + Components : a piece of website, each piece that build the 
+    website
+    + Name of Component: CAPITAL LETTER
+     -->
+    <div class="js-container">
+      <input type="text" name="" id="">
+    </div>
+
+    <!-- using external Library -->
+    <script src="https://unpkg.com/supersimpledev@3.2.1/external-library.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <!-- Babel libray : use to translate JSX to JS-->
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      function ChatInput(){
+        return (
+          // <input /> : self closing element or use <input></input>
+          // instead of using div agian and again use fragment (<></>) remove the unecessary div 
+          <>
+            <input 
+              placeholder = "Send a message to Chatbot" 
+              size = "30" 
+            />
+            <button>Send</button>
+          </>
+        );
+      }
+      // instead of using props as PARAMETER, we can use this shortcut
+      function ChatMessage({ message, sender}) {
+        // const message = props.message;
+        // const sender  = props.sender;
+
+        // const { message, sender } = props;
+
+        /*
+        if(sender === "robot"){
+          return (
+            <div>
+              <img src = "robot.png" width = "50"/>
+              {message}
+            </div>
+          );
+        }
+
+        */
+        return (
+          <div>
+            {/*const a = v1 && v2 if v1 is true, result will be v2*/}
+            {
+              sender === "robot" && (
+                <img src = "robot.png" width = "50"/>
+            )}
+            {message}
+            {
+              sender === "user" && (
+                <img src = "user.png" width = "50"/>
+            )}
+          </div>
+        );
+      }
+
+      function App(){
+        return (
+          <>
+            {/* 
+              {ChatInput()} : mean the same thing,
+              ChatInput></ChatInput> one is like use our OWN HTML element */
+            }
+
+            <ChatInput />
+
+            <ChatMessage 
+              message = "hello chatbot" 
+              sender = "user" 
+            />
+            <ChatMessage 
+              message = "Hello! How are you?" 
+              sender = "robot"
+            />
+            <ChatMessage 
+              message = "Can you get me the date?" 
+              sender = "user"
+            />
+            <ChatMessage 
+              message = "14 June 2026" 
+              sender = "robot"
+            />
+          </>
+        );
+      }
+      // use App component instead
+      // const app = (
+      //   <>
+      //     {/* {ChatInput()} : mean the same thing,
+      //       ChatInput></ChatInput> one is like use our OWN HTML element */}
+      //    <ChatInput />
+
+      //    <ChatMessage 
+      //     message = "hello chatbot" 
+      //     sender = "user" 
+      //   />
+      //    <ChatMessage 
+      //       message = "Hello! How are you?" 
+      //       sender = "robot"
+      //     />
+      //    <ChatMessage 
+      //       message = "Can you get me the date?" 
+      //       sender = "user"
+      //     />
+      //    <ChatMessage 
+      //       message = "14 June 2026" 
+      //       sender = "robot"
+      //     />
+      //   </>
+      // );
+      
+      
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+
+    </script>
+  </body>
+</html>

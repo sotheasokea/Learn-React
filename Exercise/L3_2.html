@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 3 Excersie Part 2</title>
+</head>
+<body>
+  <div class = "exercise-3g"></div>
+  <script src="https://unpkg.com/supersimpledev@3.2.1/external-library.js"></script>
+
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+  <script type = "text/babel">
+
+    function Screen(){
+      const [name, setName] = React.useState('');
+      function saveInputName(event){
+        setName(event.target.value);
+      }
+      function resetInputName(){
+        setName('');
+      }
+      function defaultName(){
+        setName('Alice');
+      }
+      return (
+        <>
+          <input 
+            placeholder = "Enter your name"
+            onChange = {saveInputName}
+            value = {name}
+          />
+          <button
+            onClick = {resetInputName}
+          >Reset</button>
+          <button
+            onClick = {defaultName}
+          >Example</button>
+          <p>Hello {name}</p>
+        </>
+      );
+    }
+    const container_3g = document.querySelector('.exercise-3g');
+    ReactDOM.createRoot(container_3g).render(<Screen />)
+
+  </script>
+</body>
+</html>

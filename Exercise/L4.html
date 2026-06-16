@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise for Lesson 4</title>
+  <link rel="stylesheet" href="L4.css">
+</head>
+<body>
+
+  <div class="container-4a"></div>
+
+  <script src="https://unpkg.com/supersimpledev@3.2.1/external-library.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+  <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+  <script type="text/babel">
+
+    function ButtonState(){
+      const [isButtonOn, setIsButtonOn] = React.useState(true);
+      function isClicked(){
+        setIsButtonOn(isButtonOn? false: true);
+        console.log(isButtonOn);
+      }
+      return (
+        <>
+          {
+            isButtonOn
+            ? <button 
+              className="button-on"
+              onClick= {isClicked}
+            >ON</button>
+            : <button 
+              className="button-off"
+              onClick= {isClicked}
+            >OFF</button>
+          }
+        </>
+        
+      );
+    }
+
+    function ChallengeExercise(){
+      const [isShownPassword, setIsShownPassword] = React.useState(false);
+
+      function ShowPassword(){
+        setIsShownPassword(isShownPassword? false : true);
+      }
+
+      return (
+        <div>
+          <p className="title-website">Hello, welcome to my website </p>
+          <div className="input-container">
+            <input 
+              placeholder="Email"
+              className="input-text"
+              />  
+          </div>
+          <div className="input-container">
+            <input
+              placeholder="Password"
+              className="input-text"
+              type={isShownPassword? "text":"password"}
+            />
+            <button
+              className="show-hide-paasword-button"
+              onClick={ShowPassword}
+            >{isShownPassword? "Hide" : "Show"}</button>
+          </div>
+          <button
+            className="button-login"
+          >Login</button>
+          <button
+            className="button-sign-up"
+          >Sign up</button>
+        </div>
+      );
+    }
+
+    function App(){
+      return (
+        <ChallengeExercise />
+        // <ButtonState />
+      );
+    }
+
+
+    const container = document.querySelector('.container-4a');
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+  
+</body>
+</html>

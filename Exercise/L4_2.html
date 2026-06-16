@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 4 exercises</title>
+  <link rel="stylesheet" href="L4.css">
+</head>
+<body>
+  <div class="exercise-4f"></div>
+  <script src="https://unpkg.com/supersimpledev/react.js"></script>
+  <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+  <script src="https://unpkg.com/supersimpledev@8.6.4/babel.js"></script>
+  <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+
+  <script type="text/babel">
+
+    // 4f-g
+    function ClockApp(){
+      const [time, setTime] = React.useState(dayjs().format('HH:mm:ss'));
+      
+      React.useEffect(()=>{
+        const interval = setInterval(()=>{
+          setTime(dayjs().format('HH:mm:ss'));
+        }, 1000);
+        // console.log(interval);
+      }, [])
+      // use [] empty array: useEffect runs once
+      // without using it : useEffect always run
+      return (
+        <>
+          <p>Current time: {time} </p>
+        </>
+      );
+    }
+    
+    function CounterApp(){
+      const [count, setCount] = React.useState(0);
+      const intervalRef = React.useRef(null);
+      function ButtonClick(){
+        setCount(count+1);
+      }
+      function ButtonReset(){
+        setCount(0);
+      }
+      function ButtonAutoClick(){
+        intervalRef.current = setInterval(()=>{
+          setCount(prev => prev +1);
+        }, 500);
+      }
+      function StopAutoClick(){
+        clearInterval(intervalRef.current);
+      }
+      return (
+        <>
+          <button 
+            onClick={ButtonClick}
+          >Click {count} {count === 1? "time": "times"}</button>
+          <button
+            onClick={ButtonReset}
+          >Reset</button>
+          <button
+            onClick={ButtonAutoClick}
+          >Auto Click</button>
+          <button
+            onClick={StopAutoClick}
+          >Stop Auto Click</button>
+        </>
+      );
+    }
+    
+    function App(){
+      return (
+        <>
+          <ClockApp />
+          <CounterApp />
+        </>
+      );
+    }
+    const container = document.querySelector('.exercise-4f');
+    ReactDOM.createRoot(container).render(<App />);
+  </script>
+</body>
+</html>

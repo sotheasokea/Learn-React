@@ -4,7 +4,7 @@ body{
   margin-bottom: 0px;
 }
 .send-button{
-  background-color: rgb(25, 135, 84);
+  background-color: rgb(21, 226, 249);
   color: white;
   padding: 12px 20px;
   margin-left: 10px;
@@ -68,4 +68,28 @@ body{
   flex-grow: 1;
   overflow: scroll;
   scrollbar-width: none;
+  
+}
+.chat-messages-container-no-chat{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  flex-grow: 1;
+  overflow: scroll;
+  scrollbar-width: none;
+  color: gray;
+  
+}
+.no-chat-text{
+  text-align: center;
+}
+.website-logo-start{
+  width: 300px;
+  user-select: none;
+    -webkit-user-drag: none;
+}
+.gif-loading{
+  height: 40px;
+  margin: -15px;
 }

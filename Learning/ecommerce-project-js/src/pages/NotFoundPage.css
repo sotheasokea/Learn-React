@@ -1,0 +1,14 @@
+.not-found-container{
+  margin: 18%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.not-found-image{
+  width: 100%;
+  max-width: 300px;
+}
+.text-404-box{
+  font-size: 100px;
+  color: rgb(74, 72, 72);
+}
